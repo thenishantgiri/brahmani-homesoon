@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/lib/supabase";
 
-export default function Home() {
+export default function ComingSoonPage() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
@@ -32,7 +33,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#f5f2ec] to-[#e2d9cd] text-[#2c2c2c] p-6">
-      <div className="relative w-48 h-48 mb-6">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="relative w-48 h-48 mb-6"
+      >
         <Image
           src="/brahmani_logo.png"
           alt="Brahmani Home Logo"
@@ -41,19 +47,33 @@ export default function Home() {
           className="object-contain"
           priority
         />
-      </div>
+      </motion.div>
 
-      <h1 className="text-4xl font-bold mb-2 text-center tracking-wide">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+        className="text-4xl font-bold mb-2 text-center tracking-wide font-serif"
+      >
         Brahmani Home
-      </h1>
-      <p className="text-lg mb-6 text-center max-w-xl">
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        className="text-lg mb-6 text-center max-w-xl font-sans"
+      >
         Exquisite handmade furniture crafted by skilled Rajasthani artisans.
         Sign up to be notified when we launch!
-      </p>
+      </motion.p>
 
-      <form
+      <motion.form
         onSubmit={handleSubmit}
         className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.6 }}
       >
         <Input
           type="email"
@@ -68,17 +88,25 @@ export default function Home() {
         >
           Notify Me
         </Button>
-      </form>
+      </motion.form>
 
       {status === "success" && (
-        <p className="text-green-600 mt-4">
+        <motion.p
+          className="text-green-600 mt-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
           Thanks! You&apos;ll be notified when we launch.
-        </p>
+        </motion.p>
       )}
       {status === "error" && (
-        <p className="text-red-600 mt-4">
+        <motion.p
+          className="text-red-600 mt-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
           There was an issue. Please try again.
-        </p>
+        </motion.p>
       )}
     </div>
   );
