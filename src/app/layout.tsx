@@ -17,7 +17,28 @@ const lato = Lato({
 
 export const metadata = {
   title: "Brahmani Home",
-  description: "Handmade Rajasthani Furniture – Coming Soon",
+  description: "Handmade luxury furniture crafted by Rajasthani artisans.",
+  openGraph: {
+    title: "Brahmani Home",
+    description: "Handmade luxury furniture crafted by Rajasthani artisans.",
+    url: "https://www.brahmanihome.com",
+    siteName: "Brahmani Home",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Brahmani Home - Handmade Rajasthani Furniture",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brahmani Home",
+    description: "Handmade luxury furniture crafted by Rajasthani artisans.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({

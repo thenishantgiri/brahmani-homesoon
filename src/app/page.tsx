@@ -62,7 +62,7 @@ export default function ComingSoonPage() {
   const { days, hours, minutes, seconds } = useCountdown(launchDate);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#f9f6f0] text-[#2c2c2c] p-6 font-sans">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#f9f6f0] text-[#2c2c2c] p-6 font-sans overflow-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
